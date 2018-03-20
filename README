@@ -1,11 +1,10 @@
-$Id: README 99607 2016-09-28 13:33:42Z gcosmo $
 --------------------------------------------------
 
      =========================================================
      Geant4 - an Object-Oriented Toolkit for Simulation in HEP
      =========================================================
 
-                            AnaEx01
+                       example from AnaEx01
                             -------
                             
  Examples AnaEx01, AnaEx02 and AnaEx03 show the usage of histogram and tuple 
@@ -107,13 +106,7 @@ $Id: README 99607 2016-09-28 13:33:42Z gcosmo $
   6- How to build
  --------------- 
 
- An additional step is needed when building the example with GNUmake
- due to using the extra shared directory: 
-  % cd path_to_AnaEx01/AnaEx01
-  % gmake setup
-  % gmake
-
- This will copy the files from shared in the example include and src;
- to remove these files:
-  % gmake clean_setup
- 
+ mkdir <build dir>
+ cd <build dir>
+ cmake ../AnaEx01
+ make

@@ -1,0 +1,19 @@
+# $Id: run.mac 100674 2016-10-31 10:43:40Z gcosmo $
+#
+# Macro file for "AnaEx01.cc"
+# 
+# can be run in batch, without graphic
+# or interactively: Idle> /control/execute run.mac
+#
+/control/verbose 2
+/run/verbose 2
+/event/verbose 0
+/tracking/verbose 2
+#
+/run/numberOfThreads 1
+# initialize
+/run/initialize
+#
+/gun/particle gamma
+/gun/energy 10 MeV
+/run/beamOn 1

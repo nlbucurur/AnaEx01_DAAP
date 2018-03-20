@@ -42,7 +42,7 @@ target_link_libraries(AnaEx01 ${Geant4_LIBRARIES})
 # relies on these scripts being in the current working directory.
 #
 set(AnaEx01_SCRIPTS
-    AnaEx01.in run.mac init_vis.mac vis.mac
+    AnaEx01.in run.mac init_vis.mac vis.mac gamma.mac
   )
 
 foreach(_script ${AnaEx01_SCRIPTS})

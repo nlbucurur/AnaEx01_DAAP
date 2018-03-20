@@ -24,20 +24,17 @@ include(${Geant4_USE_FILE})
 # Locate sources and headers for this project
 #
 include_directories(${PROJECT_SOURCE_DIR}/include 
-                    ${PROJECT_SOURCE_DIR}/shared/include 
                     ${Geant4_INCLUDE_DIR})
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc
-                  ${PROJECT_SOURCE_DIR}/shared/src/*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh
-                  ${PROJECT_SOURCE_DIR}/shared/include/*.hh)
+file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
+file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
 add_executable(AnaEx01 AnaEx01.cc 
-               ${sources} ${add_sources} ${fortran_sources} 
+               ${sources} ${add_sources} 
                ${headers} ${add_headers})
-target_link_libraries(AnaEx01 ${Geant4_LIBRARIES} ${HBOOK_LIBRARIES})
+target_link_libraries(AnaEx01 ${Geant4_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we

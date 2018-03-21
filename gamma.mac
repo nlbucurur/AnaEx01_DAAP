@@ -14,6 +14,8 @@
 # initialize
 /run/initialize
 #
+/random/setSeeds 123 456
+#
 /gun/particle gamma
 /gun/energy 10 MeV
 /run/beamOn 1

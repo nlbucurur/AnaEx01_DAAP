@@ -67,7 +67,7 @@ void ActionInitialization::Build() const
   
   // Actions
   //
-  SetUserAction(new PrimaryGeneratorAction(fDetector));
+  SetUserAction(new PrimaryGeneratorAction());
   
   RunAction* runAction = new RunAction(histo);  
   SetUserAction(runAction);

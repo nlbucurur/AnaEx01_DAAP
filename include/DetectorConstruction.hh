@@ -145,7 +145,7 @@ inline void DetectorConstruction::ComputeCalorParameters()
      fLayerThickness = fAbsorberThickness + fGapThickness;
      fCalorThickness = fNbOfLayers*fLayerThickness;
      
-     fWorldSizeX = 1.2*fCalorThickness; fWorldSizeYZ = 1.2*fCalorSizeYZ;
+     fWorldSizeX = 2*fCalorThickness; fWorldSizeYZ = 2*fCalorSizeYZ;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

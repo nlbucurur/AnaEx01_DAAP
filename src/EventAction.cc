@@ -61,9 +61,7 @@ EventAction::~EventAction()
 
 void EventAction::BeginOfEventAction(const G4Event* evt)
 {  
-  G4int evtNb = evt->GetEventID();
-  if (evtNb%fPrintModulo == 0) 
-    G4cout << "\n---> Begin of event: " << evtNb << G4endl;
+  // G4int evtNb = evt->GetEventID();
  
  // initialisation per event
  fEnergyAbs = fEnergyGap = 0.;

@@ -31,12 +31,12 @@
  replicated.
  	
  Six parameters define the calorimeter :
-    - the material of the absorber,
-    - the thickness of an absorber plate,
-    - the material of the detection gap,
-    - the thickness of a  gap,
-    - the number of layers,
-    - the transverse size of the calorimeter (the input face is a square). 
+    * the material of the absorber,
+    * the thickness of an absorber plate,
+    * the material of the detection gap,
+    * the thickness of a  gap,
+    * the number of layers,
+    * the transverse size of the calorimeter (the input face is a square). 
  
  The default geometry is constructed in DetectorConstruction class,
  but all of the above parameters can be modified interactively via
@@ -92,10 +92,10 @@
   LGap : total track length of charged particles in gap per event 
  
  And 2 Ntuples :
- - Ntuple1:
-   - one row per event : EnergyAbs EnergyGap
- - Ntuple2:
-   - one row per event : TrackLAbs TrackLGap
+ * Ntuple1:
+   ..* one row per event : EnergyAbs EnergyGap
+ * Ntuple2:
+   ..* one row per event : TrackLAbs TrackLGap
   
  These histos and ntuples are booked in HistoManager and filled from 
  EventAction.

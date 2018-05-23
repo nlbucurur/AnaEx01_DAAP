@@ -6,6 +6,9 @@
 
                        example from AnaEx01
                             -------
+
+ This example is a modified version of the AnaEx01 in the "extended" folder
+ of the examples.
                             
  Examples AnaEx01, AnaEx02 and AnaEx03 show the usage of histogram and tuple 
  manipulations using G4Analysis, ROOT and AIDA compliant systems on the same
@@ -73,11 +76,10 @@
   
  4- An event : PrimaryGeneratorAction
  ------------------------------------
- 
- The primary kinematic consists of a single particle which hits the
- calorimeter perpendicular to the input face. The type of the particle
- and its energy are set in the PrimaryGeneratorAction class, and can
- be changed via the G4 build-in commands of ParticleGun class.
+
+   Primaries are generated with the General Particle Source (GPS)
+   http://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides/ForApplicationDeveloper/html/GettingStarted/generalParticleSource.html
+   therefore all the configuration of the primaries can be done via macro
 
  5- Histograms
  ------------- 

@@ -1,7 +1,7 @@
- # Geant4 - an Object-Oriented Toolkit for Simulation in HEP #
+ # Geant4 - an Object-Oriented Toolkit for Simulation in HEP                #
 
-                       example from AnaEx01
-                            -------
+ ###                    example from AnaEx01                              ###
+
 
  This example is a modified version of the AnaEx01 in the "extended" folder
  of the examples.
@@ -20,7 +20,6 @@
  sampling calorimeter setup.
 	
 ## Detector description ##
- --------
  
  The calorimeter is a box made of a given number of layers. A layer
  consists of an absorber plate and of a detection gap. The layer is
@@ -38,6 +37,7 @@
  but all of the above parameters can be modified interactively via
  the commands defined in the DetectorMessenger class.
 
+```
         |<----layer 0---------->|<----layer 1---------->|<----layer 2---------->|
         |                       |                       |                       |
         ==========================================================================
@@ -47,7 +47,7 @@
 ======> ||              |       ||              |       ||              |       ||
         ||              |       ||              |       ||              |       ||
         ==========================================================================
-   
+```   
    
  ## Physics list ##
  

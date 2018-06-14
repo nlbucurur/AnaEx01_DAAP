@@ -37,9 +37,10 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-ActionInitialization::ActionInitialization(DetectorConstruction* detector)
+ActionInitialization::ActionInitialization(DetectorConstruction* detector, const G4bool enableRoot)
  : G4VUserActionInitialization(),
-   fDetector(detector)
+   fDetector(detector),
+   fEnableRoot(enableRoot)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -52,7 +53,7 @@ ActionInitialization::~ActionInitialization()
 void ActionInitialization::BuildForMaster() const
 {
   // Histo manager
-  HistoManager*  histo = new HistoManager();
+  HistoManager*  histo = new HistoManager(fEnableRoot);
   
   // Actions
   SetUserAction(new RunAction(histo));
@@ -63,7 +64,7 @@ void ActionInitialization::BuildForMaster() const
 void ActionInitialization::Build() const
 {
   // Histo manager
-  HistoManager*  histo = new HistoManager();
+  HistoManager*  histo = new HistoManager(fEnableRoot);
   
   // Actions
   //

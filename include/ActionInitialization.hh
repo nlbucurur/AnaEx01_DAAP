@@ -32,6 +32,7 @@
 #define ActionInitialization_h 1
 
 #include "G4VUserActionInitialization.hh"
+#include "g4root.hh"
 
 class DetectorConstruction;
 
@@ -41,7 +42,7 @@ class DetectorConstruction;
 class ActionInitialization : public G4VUserActionInitialization
 {
   public:
-    ActionInitialization(DetectorConstruction* detector);
+  ActionInitialization(DetectorConstruction* detector, const G4bool enableRoot);
     virtual ~ActionInitialization();
 
     virtual void BuildForMaster() const;
@@ -49,6 +50,7 @@ class ActionInitialization : public G4VUserActionInitialization
 
   private:
     DetectorConstruction* fDetector;
+    G4bool fEnableRoot;
 };
 
 #endif

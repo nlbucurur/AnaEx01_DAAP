@@ -38,8 +38,9 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-HistoManager::HistoManager()
- : fFactoryOn(false)
+HistoManager::HistoManager(const G4bool enable)
+  : fFactoryOn(false),
+    fEnabled(enable)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -51,6 +52,8 @@ HistoManager::~HistoManager()
 
 void HistoManager::Book()
 {
+  if(!fEnabled)
+    return;
   // Create or get analysis manager
   // The choice of analysis technology is done via selection of a namespace
   // in HistoManager.hh
@@ -114,6 +117,8 @@ void HistoManager::Book()
 
 void HistoManager::Save()
 {
+  if(!fEnabled)
+    return;
   if (! fFactoryOn) return;
   
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();    
@@ -130,6 +135,8 @@ void HistoManager::Save()
 
 void HistoManager::FillHisto(G4int ih, G4double xbin, G4double weight)
 {
+  if(!fEnabled)
+    return;
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance(); 
   analysisManager->FillH1(ih, xbin, weight);
 }
@@ -138,6 +145,8 @@ void HistoManager::FillHisto(G4int ih, G4double xbin, G4double weight)
 
 void HistoManager::Normalize(G4int ih, G4double fac)
 {
+  if(!fEnabled)
+    return;
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance(); 
   G4H1* h1 = analysisManager->GetH1(ih);
   if (h1) h1->scale(fac);
@@ -147,7 +156,9 @@ void HistoManager::Normalize(G4int ih, G4double fac)
 
 void HistoManager::FillNtuple(G4double energyAbs, G4double energyGap,
                               G4double trackLAbs, G4double trackLGap)
-{                
+{
+  if(!fEnabled)
+    return;
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
   // Fill 1st ntuple ( id = 0)
   analysisManager->FillNtupleDColumn(0, 0, energyAbs);
@@ -163,6 +174,8 @@ void HistoManager::FillNtuple(G4double energyAbs, G4double energyGap,
 
 void HistoManager::PrintStatistic()
 {
+  if(!fEnabled)
+    return;
   if (! fFactoryOn) return;
 
   G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();

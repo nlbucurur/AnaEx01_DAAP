@@ -1,5 +1,3 @@
-# Macro file for the initialization phase of example B1
-# when running in interactive mode with visualization
 #
 # Set some default verbose
 #
@@ -9,7 +7,6 @@
 /run/verbose 1
 #
 #/run/initialize
-#/ptolemy/stepMax 2 m
 #
 
 /gps/verbose 0
@@ -19,12 +16,11 @@
 
 /gps/pos/type Plane
 /gps/pos/shape Rectangle
-# /gps/pos/type Volume
-# /gps/pos/shape Para
 /gps/pos/centre 0 10 0 cm
-/gps/pos/halfx 15 cm
-/gps/pos/halfy 15 cm
+/gps/pos/halfx 10 cm
+/gps/pos/halfy 10 cm
 
+#angular distribution
 /gps/ang/type user
 /gps/hist/type theta
 /gps/hist/point 0.010862          0
@@ -71,6 +67,8 @@
 /gps/hist/point   1.4386  0.0017025
 /gps/hist/point   1.4734  0.0010015
 /gps/hist/point   1.5083 0.00050073
+
+#energy distribution
 /gps/ene/type Arb
 #/gps/ene/diffspec 0
 /gps/hist/type arb
@@ -119,8 +117,10 @@
 /gps/hist/point 98058.0265    0.22311
 /gps/hist/inter Lin
 
+#switch axes to make mu coming from Y
 /gps/pos/rot1 1. 0. 0.
 /gps/pos/rot2 0. 0. 1.
-#
+
+#finally...
 /run/printProgress 1000
 /run/beamOn 100

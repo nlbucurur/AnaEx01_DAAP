@@ -61,22 +61,29 @@ int main(int argc,char** argv)
 
   // Construct the default run manager
   //
-#ifdef G4MULTITHREADED
-  G4int nThreads = G4Threading::G4GetNumberOfCores();
-  if (argc==3) nThreads = G4UIcommand::ConvertToInt(argv[2]);
-  if (argc==1) nThreads = 1;
-  G4MTRunManager * runManager = new G4MTRunManager;
-  runManager->SetNumberOfThreads(nThreads);
-#else
+// #ifdef G4MULTITHREADED
+//   G4int nThreads = G4Threading::G4GetNumberOfCores();
+//   if (argc==3) nThreads = G4UIcommand::ConvertToInt(argv[2]);
+//   if (argc==1) nThreads = 1;
+//   G4MTRunManager * runManager = new G4MTRunManager;
+//   runManager->SetNumberOfThreads(nThreads);
+// #else
   G4RunManager * runManager = new G4RunManager;
-#endif
+// #endif
 
   // Set mandatory initialization classes
   //
   DetectorConstruction* detector = new DetectorConstruction;
   runManager->SetUserInitialization(detector);
   runManager->SetUserInitialization(new FTFP_BERT);
-  runManager->SetUserInitialization(new ActionInitialization(detector));
+  if(!ui)
+    {
+      runManager->SetUserInitialization(new ActionInitialization(detector,true));
+    }
+  else
+    {
+      runManager->SetUserInitialization(new ActionInitialization(detector,false));
+    }
 
   // Initialize visualization
   //

@@ -46,7 +46,7 @@
 class HistoManager
 {
   public:
-    HistoManager();
+    HistoManager(const G4bool enable);
    ~HistoManager();
 
     void Book();
@@ -61,7 +61,8 @@ class HistoManager
     void PrintStatistic();        
     
   private:
-    G4bool fFactoryOn;    
+    G4bool fFactoryOn;
+    G4bool fEnabled;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

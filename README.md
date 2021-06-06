@@ -1,10 +1,7 @@
- # Geant4 - an Object-Oriented Toolkit for Simulation in HEP                #
-
- ###                    example from AnaEx01                              ###
-
+ # example from AnaEx01
 
  This example is a modified version of the AnaEx01 in the "extended" folder
- of the examples.
+ of the Geant4 examples.
                             
  Examples AnaEx01, AnaEx02 and AnaEx03 show the usage of histogram and tuple 
  manipulations using G4Analysis, ROOT and AIDA compliant systems on the same

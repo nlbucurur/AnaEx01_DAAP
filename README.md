@@ -100,7 +100,10 @@
  
  ## How to build ## 
 
- mkdir <build dir>
- cd <build dir>
- cmake ../AnaEx01
- make
+ `mkdir <build dir>`
+ 
+ `cd <build dir>`
+ 
+ `cmake ../AnaEx01`
+ 
+ `make`

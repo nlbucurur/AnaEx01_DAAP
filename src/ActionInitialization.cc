@@ -23,7 +23,6 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: ActionInitialization.cc 68058 2013-03-13 14:47:43Z gcosmo $
 //
 /// \file ActionInitialization.cc
 /// \brief Implementation of the ActionInitialization class
@@ -37,10 +36,9 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-ActionInitialization::ActionInitialization(DetectorConstruction* detector, const G4bool enableRoot)
+ActionInitialization::ActionInitialization(DetectorConstruction* detector)
  : G4VUserActionInitialization(),
-   fDetector(detector),
-   fEnableRoot(enableRoot)
+   fDetector(detector)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -53,7 +51,7 @@ ActionInitialization::~ActionInitialization()
 void ActionInitialization::BuildForMaster() const
 {
   // Histo manager
-  HistoManager*  histo = new HistoManager(fEnableRoot);
+  HistoManager*  histo = new HistoManager();
   
   // Actions
   SetUserAction(new RunAction(histo));
@@ -64,7 +62,7 @@ void ActionInitialization::BuildForMaster() const
 void ActionInitialization::Build() const
 {
   // Histo manager
-  HistoManager*  histo = new HistoManager(fEnableRoot);
+  HistoManager*  histo = new HistoManager();
   
   // Actions
   //

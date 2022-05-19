@@ -23,7 +23,6 @@
 // * acceptance of all terms of the Geant4 Software license.          *
 // ********************************************************************
 //
-// $Id: ActionInitialization.hh 68058 2013-03-13 14:47:43Z gcosmo $
 //
 /// \file ActionInitialization.hh
 /// \brief Definition of the ActionInitialization class
@@ -32,7 +31,6 @@
 #define ActionInitialization_h 1
 
 #include "G4VUserActionInitialization.hh"
-#include "g4root.hh"
 
 class DetectorConstruction;
 
@@ -42,7 +40,7 @@ class DetectorConstruction;
 class ActionInitialization : public G4VUserActionInitialization
 {
   public:
-  ActionInitialization(DetectorConstruction* detector, const G4bool enableRoot);
+    ActionInitialization(DetectorConstruction* detector);
     virtual ~ActionInitialization();
 
     virtual void BuildForMaster() const;
@@ -50,7 +48,6 @@ class ActionInitialization : public G4VUserActionInitialization
 
   private:
     DetectorConstruction* fDetector;
-    G4bool fEnableRoot;
 };
 
 #endif

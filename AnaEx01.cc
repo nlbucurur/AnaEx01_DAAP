@@ -27,7 +27,6 @@
 /// \brief Main program of the analysis/AnaEx01 example
 //
 //
-// $Id: AnaEx01.cc 100674 2016-10-31 10:43:40Z gcosmo $
 //
 //
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -36,11 +35,7 @@
 #include "DetectorConstruction.hh"
 #include "ActionInitialization.hh"
 
-#ifdef G4MULTITHREADED
-#include "G4MTRunManager.hh"
-#else
-#include "G4RunManager.hh"
-#endif
+#include "G4RunManagerFactory.hh"
 
 #include "G4UImanager.hh"
 #include "FTFP_BERT.hh"
@@ -51,7 +46,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 int main(int argc,char** argv)
-{     
+{
   // Detect interactive mode (if no arguments) and define UI session
   //
   G4UIExecutive* ui = 0;
@@ -61,29 +56,16 @@ int main(int argc,char** argv)
 
   // Construct the default run manager
   //
-// #ifdef G4MULTITHREADED
-//   G4int nThreads = G4Threading::G4GetNumberOfCores();
-//   if (argc==3) nThreads = G4UIcommand::ConvertToInt(argv[2]);
-//   if (argc==1) nThreads = 1;
-//   G4MTRunManager * runManager = new G4MTRunManager;
-//   runManager->SetNumberOfThreads(nThreads);
-// #else
-  G4RunManager * runManager = new G4RunManager;
-// #endif
+  auto* runManager = G4RunManagerFactory::CreateRunManager();
+  G4int nThreads = 1;
+  runManager->SetNumberOfThreads(nThreads);
 
   // Set mandatory initialization classes
   //
   DetectorConstruction* detector = new DetectorConstruction;
   runManager->SetUserInitialization(detector);
   runManager->SetUserInitialization(new FTFP_BERT);
-  if(!ui)
-    {
-      runManager->SetUserInitialization(new ActionInitialization(detector,true));
-    }
-  else
-    {
-      runManager->SetUserInitialization(new ActionInitialization(detector,false));
-    }
+  runManager->SetUserInitialization(new ActionInitialization(detector));
 
   // Initialize visualization
   //
@@ -93,20 +75,20 @@ int main(int argc,char** argv)
   // Get the pointer to the User Interface manager
   //
   G4UImanager* UImanager = G4UImanager::GetUIpointer();
-  
+
   if ( ! ui ) {
     // batch mode
     G4String command = "/control/execute ";
     G4String fileName = argv[1];
-    UImanager->ApplyCommand(command+fileName);    
+    UImanager->ApplyCommand(command+fileName);
   }
-  else {  
+  else {
     // interactive mode
-    UImanager->ApplyCommand("/control/execute init_vis.mac");     
+    UImanager->ApplyCommand("/control/execute init_vis.mac");
     ui->SessionStart();
     delete ui;
   }
-  
+
   // Job termination
   delete visManager;
   delete runManager;

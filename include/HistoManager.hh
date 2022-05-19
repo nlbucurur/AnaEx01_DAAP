@@ -27,7 +27,6 @@
 /// \brief Definition of the HistoManager class
 //
 //
-// $Id: HistoManager.hh 99607 2016-09-28 13:33:42Z gcosmo $
 // 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo...... 
@@ -35,18 +34,15 @@
 #ifndef HistoManager_h
 #define HistoManager_h 1
 
+#include "G4AnalysisManager.hh"
 #include "globals.hh"
-
-#include "g4root.hh"
-//#include "g4csv.hh"
-//#include "g4xml.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 class HistoManager
 {
   public:
-    HistoManager(const G4bool enable);
+    HistoManager();
    ~HistoManager();
 
     void Book();
@@ -61,8 +57,7 @@ class HistoManager
     void PrintStatistic();        
     
   private:
-    G4bool fFactoryOn;
-    G4bool fEnabled;
+    G4bool fFactoryOn;    
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

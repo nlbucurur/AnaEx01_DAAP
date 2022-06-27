@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------
 # Setup the project
-cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16...3.21)
 project(AnaEx01)
 
 #----------------------------------------------------------------------------
@@ -25,8 +25,8 @@ include(${Geant4_USE_FILE})
 #
 include_directories(${PROJECT_SOURCE_DIR}/include 
                     ${Geant4_INCLUDE_DIR})
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+file(GLOB sources ${PROJECT_SOURCE_DIR}/src/[a-z0-9]*.cc)
+file(GLOB headers ${PROJECT_SOURCE_DIR}/include/[a-z0-9]*.hh)
 
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
@@ -42,7 +42,7 @@ target_link_libraries(AnaEx01 ${Geant4_LIBRARIES})
 # relies on these scripts being in the current working directory.
 #
 set(AnaEx01_SCRIPTS
-    AnaEx01.in run.mac init_vis.mac vis.mac gamma.mac cosmicMuons.mac
+    run.mac init_vis.mac vis.mac gamma.mac cosmicMuons.mac
   )
 
 foreach(_script ${AnaEx01_SCRIPTS})

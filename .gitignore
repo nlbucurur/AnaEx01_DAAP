@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Emacs tmp files
+\#*#
+\.#*
+*~
+
+# build dirs
+build*/

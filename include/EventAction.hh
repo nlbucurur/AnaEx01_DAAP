@@ -49,10 +49,10 @@ class EventAction : public G4UserEventAction
 {
 public:
   EventAction(RunAction*, HistoManager*);
-  virtual ~EventAction();
+  virtual ~EventAction() override;
 
-  virtual void  BeginOfEventAction(const G4Event*);
-  virtual void    EndOfEventAction(const G4Event*);
+  virtual void  BeginOfEventAction(const G4Event*) override;
+  virtual void    EndOfEventAction(const G4Event*) override;
     
   void AddAbs(G4double de, G4double dl) {fEnergyAbs += de; fTrackLAbs += dl;};
   void AddGap(G4double de, G4double dl) {fEnergyGap += de; fTrackLGap += dl;};

@@ -66,7 +66,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
      void SetCalorSizeYZ(G4double);          
      void SetNbOfLayers (G4int);   
      
-     virtual G4VPhysicalVolume* Construct();
+     virtual G4VPhysicalVolume* Construct() override;
 
   public:
   

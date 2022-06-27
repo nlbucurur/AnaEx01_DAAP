@@ -49,10 +49,10 @@ class RunAction : public G4UserRunAction
 {
 public:
   RunAction(HistoManager*);
-  virtual ~RunAction();
+  virtual ~RunAction() override;
 
-  virtual void BeginOfRunAction(const G4Run*);
-  virtual void   EndOfRunAction(const G4Run*);
+  virtual void BeginOfRunAction(const G4Run*) override;
+  virtual void   EndOfRunAction(const G4Run*) override;
     
   void FillPerEvent(G4double, G4double, G4double, G4double); 
 

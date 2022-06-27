@@ -11,9 +11,9 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction{
 
 public:
 	PrimaryGeneratorAction();    
-	~PrimaryGeneratorAction();
+	virtual ~PrimaryGeneratorAction() override;
 public:
-	virtual void GeneratePrimaries(G4Event*);
+	virtual void GeneratePrimaries(G4Event*) override;
 
 private:
 

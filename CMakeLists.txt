@@ -28,6 +28,25 @@ include_directories(${PROJECT_SOURCE_DIR}/include
 file(GLOB sources ${PROJECT_SOURCE_DIR}/src/[a-z0-9]*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/[a-z0-9]*.hh)
 
+macro(print_all_headers)
+    message(STATUS "print_all_headers------------------------------------------{")
+    foreach (_variableName ${headers})
+        message(STATUS "${_variableName}=${${_variableName}}")
+    endforeach()
+    message(STATUS "print_all_headerss------------------------------------------}")
+endmacro()
+print_all_headers()
+
+macro(print_all_sources)
+    message(STATUS "print_all_sources------------------------------------------{")
+    foreach (_variableName ${sources})
+        message(STATUS "${_variableName}=${${_variableName}}")
+    endforeach()
+    message(STATUS "print_all_sourcess------------------------------------------}")
+endmacro()
+print_all_sources()
+
+
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #

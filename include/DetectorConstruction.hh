@@ -53,7 +53,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
   public:
   
     DetectorConstruction();
-    virtual ~DetectorConstruction();
+    virtual ~DetectorConstruction() override;
 
   public:
      

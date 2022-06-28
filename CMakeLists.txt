@@ -25,8 +25,8 @@ include(${Geant4_USE_FILE})
 #
 include_directories(${PROJECT_SOURCE_DIR}/include 
                     ${Geant4_INCLUDE_DIR})
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/[a-z0-9]*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/[a-z0-9]*.hh)
+file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
+file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
 macro(print_all_headers)
     message(STATUS "print_all_headers------------------------------------------{")
@@ -35,7 +35,7 @@ macro(print_all_headers)
     endforeach()
     message(STATUS "print_all_headerss------------------------------------------}")
 endmacro()
-print_all_headers()
+#print_all_headers()
 
 macro(print_all_sources)
     message(STATUS "print_all_sources------------------------------------------{")
@@ -44,7 +44,7 @@ macro(print_all_sources)
     endforeach()
     message(STATUS "print_all_sourcess------------------------------------------}")
 endmacro()
-print_all_sources()
+#print_all_sources()
 
 
 #----------------------------------------------------------------------------

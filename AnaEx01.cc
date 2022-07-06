@@ -38,7 +38,9 @@
 #include "G4RunManagerFactory.hh"
 
 #include "G4UImanager.hh"
-#include "FTFP_BERT.hh"
+
+#include "G4PhysListFactory.hh"
+#include "G4VModularPhysicsList.hh"
 
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
@@ -47,6 +49,8 @@
 
 int main(int argc,char** argv)
 {
+  G4String physListName;
+  
   // Detect interactive mode (if no arguments) and define UI session
   //
   G4UIExecutive* ui = 0;
@@ -60,11 +64,34 @@ int main(int argc,char** argv)
   G4int nThreads = 1;
   runManager->SetNumberOfThreads(nThreads);
 
+
+  // Physics list factory
+  G4PhysListFactory factory;
+  G4VModularPhysicsList* physList = nullptr;
+  //  runManager->SetUserInitialization(new FTFP_BERT);
+
+  //use cases - reference physics lists
+  //https://geant4.web.cern.ch/node/302
+  //EM physics lists
+  //https://geant4.web.cern.ch/node/146
+  physListName = "QGSP_BIC_EMZ";
+  // Check if the name is known to the factory
+  if ( physListName.size() &&  (! factory.IsReferencePhysList(physListName) ) ) {
+    G4cerr << "Physics list " << physListName
+           << " is not available in PhysListFactory." << G4endl;
+    physListName.clear();
+  }
+   // Reference PhysicsList via its name
+  physList = factory.GetReferencePhysList(physListName);
+
   // Set mandatory initialization classes
   //
   DetectorConstruction* detector = new DetectorConstruction;
   runManager->SetUserInitialization(detector);
-  runManager->SetUserInitialization(new FTFP_BERT);
+  runManager->SetUserInitialization(physList);
+
+  // Set user action classes
+  //
   runManager->SetUserInitialization(new ActionInitialization(detector));
 
   // Initialize visualization

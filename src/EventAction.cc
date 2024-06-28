@@ -78,7 +78,7 @@ void EventAction::EndOfEventAction(const G4Event*)
   
   //fill histograms
   //
-  fHistoManager->FillHisto(0, fEnergyAbs);
+  fHistoManager->FillHisto(0, fEnergyAbs*100/(30E3));
   fHistoManager->FillHisto(1, fEnergyGap);
   fHistoManager->FillHisto(2, fTrackLAbs);
   fHistoManager->FillHisto(3, fTrackLGap);

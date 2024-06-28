@@ -13,7 +13,7 @@
 /run/initialize
 #
 /gps/particle e-
-/gps/energy 500 MeV
+/gps/energy 30 GeV
 /gps/position -10 0 0 cm
 /gps/direction 1 0 0
 /run/beamOn 1000

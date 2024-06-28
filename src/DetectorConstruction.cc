@@ -68,15 +68,15 @@ DetectorConstruction::DetectorConstruction()
  fDetectorMessenger(0)
 {
   // default parameter values of the calorimeter
-  fAbsorberThickness = 10.*mm;
-  fGapThickness      =  5.*mm;
-  fNbOfLayers        = 10;
+  fAbsorberThickness = 5*1.86*cm;
+  fGapThickness      =  0.*mm;
+  fNbOfLayers        = 1;
   fCalorSizeYZ       = 10.*cm;
   ComputeCalorParameters();
   
   // materials
   DefineMaterials();
-  SetAbsorberMaterial("G4_Pb");
+  SetAbsorberMaterial("G4_CESIUM_IODIDE");
   SetGapMaterial("G4_lAr");
   
   // create commands for interactive definition of the calorimeter
@@ -103,7 +103,7 @@ void DetectorConstruction::DefineMaterials()
 //
 G4NistManager* man = G4NistManager::Instance();
 fDefaultMaterial = man->FindOrBuildMaterial("G4_Galactic");
-man->FindOrBuildMaterial("G4_Pb");
+man->FindOrBuildMaterial("G4_CESIUM_IODIDE");
 man->FindOrBuildMaterial("G4_lAr");
 
 // print table

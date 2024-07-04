@@ -55,13 +55,13 @@ public:
   virtual void    EndOfEventAction(const G4Event*) override;
     
   void AddAbs(G4double de, G4double dl) {fEnergyAbs += de; fTrackLAbs += dl;};
-  void AddGap(G4double de, G4double dl) {fEnergyGap += de; fTrackLGap += dl;};
+  void AddGap(G4double de, G4double dl) {fEnergyAbsSec += de; fTrackLGap += dl;};
     
 private:
    RunAction*    fRunAct;
    HistoManager* fHistoManager;
       
-   G4double  fEnergyAbs, fEnergyGap;
+   G4double  fEnergyAbs, fEnergyAbsSec;
    G4double  fTrackLAbs, fTrackLGap;
                      
    G4int     fPrintModulo;                             

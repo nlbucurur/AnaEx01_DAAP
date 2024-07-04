@@ -39,6 +39,8 @@
 #include "EventAction.hh"
 
 #include "G4Step.hh"
+#include "G4UnitsTable.hh"
+#include "G4SystemOfUnits.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -65,11 +67,24 @@ void SteppingAction::UserSteppingAction(const G4Step* aStep)
   G4double edep = aStep->GetTotalEnergyDeposit();
   
   G4double stepl = 0.;
+  
   if (aStep->GetTrack()->GetDefinition()->GetPDGCharge() != 0.)
     stepl = aStep->GetStepLength();
-      
-  if (volume == fDetector->GetAbsorber()) fEventAction->AddAbs(edep,stepl);
-  if (volume == fDetector->GetGap())      fEventAction->AddGap(edep,stepl);
+
+
+  // Check if the particle is a secondary particle
+  if (aStep->GetTrack()->GetParentID() != 0) {
+      // G4cout << "Primary particle step: Volume = " << volume->GetName()
+      //      << ", Edep = " << G4BestUnit(edep, "Energy")
+      //      << ", Step length = " << G4BestUnit(stepl, "Length")
+      //      << G4endl;
+      // Record energy deposited by secondary particles
+      if (volume == fDetector->GetAbsorber()) fEventAction->AddAbs(edep, stepl);
+      //if (volume == fDetector->GetGap())      fEventAction->AddGap(edep, stepl);
+  }
+
+  if (volume == fDetector->GetAbsorber()) fEventAction->AddGap(edep,stepl);
+  // if (volume == fDetector->GetGap())      fEventAction->AddGap(edep,stepl);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

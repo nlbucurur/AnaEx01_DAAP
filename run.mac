@@ -14,6 +14,6 @@
 #
 /gps/particle e-
 /gps/energy 30 GeV
-/gps/position -10 0 0 cm
+/gps/position -5*1.86/2 0 0 cm
 /gps/direction 1 0 0
 /run/beamOn 1000

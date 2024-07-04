@@ -46,7 +46,7 @@
 EventAction::EventAction(RunAction* run, HistoManager* histo)
 :G4UserEventAction(),
  fRunAct(run),fHistoManager(histo),
- fEnergyAbs(0.), fEnergyGap(0.),
+ fEnergyAbs(0.), fEnergyAbsSec(0.),
  fTrackLAbs(0.), fTrackLGap(0.),
  fPrintModulo(0)                             
 {
@@ -64,7 +64,7 @@ void EventAction::BeginOfEventAction(const G4Event* evt)
   // G4int evtNb = evt->GetEventID();
  
  // initialisation per event
- fEnergyAbs = fEnergyGap = 0.;
+ fEnergyAbs = fEnergyAbsSec = 0.;
  fTrackLAbs = fTrackLGap = 0.;
 }
 
@@ -74,18 +74,19 @@ void EventAction::EndOfEventAction(const G4Event*)
 {
   //accumulates statistic
   //
-  fRunAct->FillPerEvent(fEnergyAbs, fEnergyGap, fTrackLAbs, fTrackLGap);
+  fRunAct->FillPerEvent(fEnergyAbs, fEnergyAbsSec, fTrackLAbs, fTrackLGap);
   
   //fill histograms
   //
   fHistoManager->FillHisto(0, fEnergyAbs*100/(30E3));
-  fHistoManager->FillHisto(1, fEnergyGap);
+  // fHistoManager->FillHisto(0, fEnergyAbs);
+  fHistoManager->FillHisto(1, fEnergyAbsSec*100/(30E3));
   fHistoManager->FillHisto(2, fTrackLAbs);
   fHistoManager->FillHisto(3, fTrackLGap);
   
   //fill ntuple
   //
-  fHistoManager->FillNtuple(fEnergyAbs, fEnergyGap, fTrackLAbs, fTrackLGap);
+  fHistoManager->FillNtuple(fEnergyAbs, fEnergyAbsSec, fTrackLAbs, fTrackLGap);
 }  
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -71,7 +71,7 @@ DetectorConstruction::DetectorConstruction()
   fAbsorberThickness = 5*1.86*cm;
   fGapThickness      =  0.*mm;
   fNbOfLayers        = 1;
-  fCalorSizeYZ       = 10.*cm;
+  fCalorSizeYZ       = 5*1.86*cm;
   ComputeCalorParameters();
   
   // materials

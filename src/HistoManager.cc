@@ -85,9 +85,9 @@ void HistoManager::Book()
     // analysisManager->SetFirstHistoId(1);
 
     // id = 0
-    analysisManager->CreateH1("EAbs","Edep by photons in 5X0 of CsI", 100, 0., 100);
+    analysisManager->CreateH1("EAbs","Edep by e- in 5X0 of CsI", 100, 0., 100);
     // id = 1
-    analysisManager->CreateH1("EAbsSec","Edep by photons in 5X0 of CsI", 100, 0., 100);
+    analysisManager->CreateH1("EAbsSec","Edep by e- in 5X0 of CsI", 100, 0., 100);
     // id = 2
     analysisManager->CreateH1("LAbs","trackL in absorber (mm)", 100, 0., 1*m);
     // id = 3
